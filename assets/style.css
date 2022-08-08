@@ -1,0 +1,47 @@
+@font-face{
+  font-family:Inter;
+  font-style:normal;
+  font-weight:400;
+  font-feature-settings:"liga","tnum","case","calt","zero","ss01","locl";
+  src:url(Inter-Medium.woff) format("woff2"),url(Inter-Medium.woff2) format("woff");
+  font-display:swap
+}
+
+body.dark-theme{
+    --background:#000000;
+}
+
+.fullscreen {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    bottom: 50%;
+    width: 100%; 
+}
+
+.trippy {
+    color: rgb(6, 103, 248);
+    animation: trippy 10s linear infinite;
+  }
+  
+  @keyframes trippy {
+    from {
+      filter: hue-rotate(0deg);
+    }
+  
+    to {
+      filter: hue-rotate(360deg);
+    }
+  }
+
+body{
+    margin:0;
+    padding:0;
+    font-family:Inter,-apple-system,BlinkMacSystemFont,Roboto,Segoe UI,Helvetica,Arial,sans-serif;
+    font-size:1rem;
+    font-weight:500;
+    background-color:#fff;
+    background-color:var(--background);
+    color:#222;
+    color:var(--color);
+}
