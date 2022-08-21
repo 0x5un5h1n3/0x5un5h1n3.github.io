@@ -69,7 +69,8 @@ body{
     color:var(--color);
 }
 
-@media screen and (min-width:412px){
+/* For small devices */
+@media screen and (max-width: 320px){
   .minimize-text{
   margin: 1rem;
   word-wrap: break-word; 
@@ -84,4 +85,41 @@ body{
     width: 100%; 
   }
   
+}
+
+/* For medium devices */
+@media screen and (min-width: 576px){
+  .minimize-text{
+  margin: 1rem;
+  word-wrap: break-word; 
+  border: none; 
+  }
+
+  .fullscreen {
+    text-align: center;
+    position: absolute;
+    top: 30%;
+    bottom: 70%;
+    width: 100%; 
+  }
+  
+}
+
+
+/* For large devices */
+@media screen and (min-width: 992px){
+  .minimize-text{
+    margin: 1rem;
+    word-wrap: break-word; 
+    border: none; 
+    }
+  
+  .fullscreen {
+    text-align: center;
+    position: absolute;
+    top: 30%;
+    bottom: 70%;
+    width: 100%; 
+  }
+    
 }
