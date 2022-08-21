@@ -69,7 +69,7 @@ body{
     color:var(--color);
 }
 
-@media (max-width:1080px){
+@media (max-width:412px){
   .minimize-text{
   margin: 1rem;
   word-wrap: break-word; 
