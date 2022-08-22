@@ -79,8 +79,8 @@ body{
   .fullscreen {
     text-align: center;
     position: absolute;
-    top: 30%;
-    bottom: 70%;
+    top: 40%;
+    bottom: 60%;
     width: 100%; 
   }
   
