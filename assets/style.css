@@ -53,13 +53,8 @@
 body {
   font-size: 1.2em;
   margin: 0;
-  padding: 2em;
   font-family: "Mint Grotesk", sans-serif;
-  background: linear-gradient(
-    0deg,
-    rgba(26, 151, 152, 1) 0%,
-    rgba(191, 114, 240, 1) 100%
-  );
+  background: rgb(9, 9, 11);
   background-repeat: no-repeat;
   background-attachment: fixed;
   height: 100%;
@@ -228,17 +223,17 @@ hr {
   }
   main {
     padding: 4.5em;
-    padding-top: 15em;
-    padding-bottom: 15em;
+    padding-top: 14.5em;
+    padding-bottom: 14.5em;
   }
 }
 
 :root {
   --box-shadow: 0 0 transparent, 0 0 transparent,
-    0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    0 4px 6px -1px rgba(255, 255, 255, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
-body {
+.container {
   word-wrap: break-word;
   font-family: Inter, -apple-system, BlinkMacSystemFont, Roboto, Segoe UI,
     Helvetica, Arial, sans-serif;
@@ -255,6 +250,12 @@ body {
     #fba3d5
   );
   background-size: 1400% 1400%;
+  max-width: 30em;
+  border-radius: 1em;
+  margin: 0 auto;
+  box-shadow: var(--box-shadow);
+  margin-top: 10%;
+  margin-bottom: 10%;
 
   -webkit-animation: colours 15s ease infinite;
   -moz-animation: colours 15s ease infinite;
