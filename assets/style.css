@@ -227,7 +227,9 @@ hr {
     padding: 1em;
   }
   main {
-    padding: 1.5em;
+    padding: 4.5em;
+    padding-top: 15em;
+    padding-bottom: 15em;
   }
 }
 
