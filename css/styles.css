@@ -837,10 +837,6 @@ input, textarea {
   display: none !important;
 }
 
-.mobile-menu-btn {
-  display: none;
-}
-
 .mobile-overlay {
   display: none;
   position: fixed;
@@ -1050,10 +1046,6 @@ input, textarea {
   .terminal-window.minimized ~ .mobile-nav {
     display: none !important;
   }
-  
-  .mobile-menu-btn {
-    display: none;
-  }
 }
 
 @media (max-width: 480px) {
@@ -1073,27 +1065,6 @@ input, textarea {
   
   .terminal-sidebar.mobile-open {
     left: 0;
-  }
-  
-  .mobile-menu-btn {
-    display: block;
-    position: fixed;
-    top: 10px;
-    left: 10px;
-    z-index: 10001;
-    background: var(--terminal-bg);
-    border: 1px solid var(--terminal-green);
-    border-radius: 4px;
-    padding: 8px 12px;
-    color: var(--terminal-green);
-    cursor: pointer;
-    font-size: 20px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-  }
-  
-  .mobile-menu-btn:hover {
-    background: var(--terminal-green);
-    color: var(--terminal-bg);
   }
   
   .mobile-overlay.active {
