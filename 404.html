@@ -1,64 +1,281 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>404 Not Found - 0x5un5h1n3's Digital Hub</title>
-    <link rel="stylesheet" href="css/styles.css" />
-    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico" />
-    <meta name="robots" content="noindex, nofollow" />
-  </head>
-  <body>
-    <header class="header">
-      <nav class="navbar">
-        <div class="logo">
-          <a href="index.html" aria-label="Home">0x5un5h1n3</a>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Command Not Found | Terminal</title>
+  <meta name="description" content="Command not found - Return to terminal interface">
+  <link rel="canonical" href="https://0x5un5h1n3.github.io">
+  
+  <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text x='0' y='14' font-family='monospace' fill='%23f44747'>!</text></svg>">
+  
+  <link rel="stylesheet" href="css/styles.css">
+  
+  <meta name="robots" content="noindex, nofollow">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  
+  <style>
+    .error-desktop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    
+    .error-terminal {
+      width: 90%;
+      max-width: 800px;
+      height: 70%;
+      background: var(--window-bg);
+      border-radius: 8px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      border: 1px solid var(--window-border);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    
+    .error-titlebar {
+      height: 30px;
+      background: var(--titlebar-bg);
+      border-bottom: 1px solid var(--window-border);
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+    }
+    
+    .error-dots {
+      display: flex;
+      gap: 8px;
+    }
+    
+    .error-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+    
+    .error-dot.red { background: var(--button-close); }
+    .error-dot.yellow { background: var(--button-minimize); }
+    .error-dot.green { background: var(--button-maximize); }
+    
+    .error-title {
+      flex: 1;
+      text-align: center;
+      color: var(--titlebar-fg);
+      font-size: 13px;
+      font-weight: 500;
+    }
+    
+    .error-content {
+      flex: 1;
+      background: var(--terminal-bg);
+      padding: 20px;
+      color: var(--terminal-fg);
+      font-family: 'JetBrains Mono', monospace;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    .error-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    .error-code {
+      font-size: clamp(3rem, 10vw, 6rem);
+      font-weight: 700;
+      color: var(--terminal-red);
+      margin-bottom: 1rem;
+      animation: glitch 2s infinite;
+    }
+    
+    .error-message {
+      font-size: 1.5rem;
+      color: var(--terminal-yellow);
+      margin-bottom: 2rem;
+    }
+    
+    .error-output {
+      background: #2d2d30;
+      border: 1px solid var(--window-border);
+      border-radius: 4px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    
+    .error-line {
+      margin: 4px 0;
+    }
+    
+    .error-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .error-btn {
+      background: transparent;
+      border: 1px solid var(--terminal-green);
+      color: var(--terminal-green);
+      padding: 0.75rem 1.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+    
+    .error-btn:hover {
+      background: var(--terminal-green);
+      color: var(--terminal-bg);
+      box-shadow: 0 0 10px rgba(78, 201, 176, 0.3);
+    }
+    
+    .error-btn.danger {
+      border-color: var(--terminal-red);
+      color: var(--terminal-red);
+    }
+    
+    .error-btn.danger:hover {
+      background: var(--terminal-red);
+      color: var(--terminal-bg);
+      box-shadow: 0 0 10px rgba(244, 71, 71, 0.3);
+    }
+    
+    @keyframes glitch {
+      0%, 100% { transform: translateX(0); }
+      10% { transform: translateX(-2px); }
+      20% { transform: translateX(2px); }
+      30% { transform: translateX(-1px); }
+      40% { transform: translateX(1px); }
+      50% { transform: translateX(-1px); }
+      60% { transform: translateX(1px); }
+      70% { transform: translateX(-2px); }
+      80% { transform: translateX(2px); }
+      90% { transform: translateX(-1px); }
+    }
+    
+    .blink {
+      animation: blink 1s infinite;
+    }
+    
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="custom-cursor"></div>
+
+  <div class="error-desktop">
+    <div class="error-terminal">
+      <div class="error-titlebar">
+        <div class="error-dots">
+          <div class="error-dot red"></div>
+          <div class="error-dot yellow"></div>
+          <div class="error-dot green"></div>
         </div>
-      </nav>
-    </header>
-    <main>
-      <section class="hero">
-        <h1>404 - Page Not Found</h1>
-        <p>Sorry, the page you are looking for does not exist.</p>
-        <a href="index.html" class="btn">Return to Homepage</a>
-      </section>
-    </main>
-    <footer>
-      <div class="footer-content">
-        <p>&#169; <span id="current-year"></span> 0x5un5h1n3</p>
-        <p>This site is privacy-friendly and does not track users.</p>
-        <div class="social-links">
-          <a
-            href="https://mastodon.social/@0x5un5h1n3"
-            target="_blank"
-            rel="me noopener noreferrer"
-            >Mastodon</a
-          >
-          <a
-            href="https://github.com/0x5un5h1n3"
-            target="_blank"
-            rel="noopener noreferrer"
-            >GitHub</a
-          >
-          <a
-            href="https://keyoxide.org/hkp/E7722010D9E1010C9C2C4054820C9C02C1229C58"
-            target="_blank"
-            rel="noopener noreferrer"
-            >Keyoxide</a
-          >
-          <a
-            href="https://0x5un5h1n3.gitlab.io/blog/"
-            target="_blank"
-            rel="noopener noreferrer"
-            >Blog</a
-          >
+        <div class="error-title">404@terminal:~$ - Command Not Found</div>
+      </div>
+
+      <div class="error-content">
+        <div class="error-header">
+          <div class="error-code">404</div>
+          <div class="error-message">bash: command not found</div>
+        </div>
+        
+        <div class="error-output">
+          <div class="error-line">
+            <span style="color: var(--terminal-green);">0x5un5h1n3@terminal:~$</span>
+            <span style="color: var(--terminal-fg);">cd /requested/path</span>
+          </div>
+          <div class="error-line">
+            <span style="color: var(--terminal-red);">bash: cd: /requested/path: No such file or directory</span>
+          </div>
+          <div class="error-line">
+            <span style="color: var(--terminal-gray);"># The requested resource does not exist in this filesystem</span>
+          </div>
+          <div class="error-line"></div>
+          <div class="error-line">
+            <span style="color: var(--terminal-gray);"># Available paths:</span>
+          </div>
+          <div class="error-line">
+            <span style="color: var(--terminal-blue);">  ./welcome/     - Main interface and introduction</span>
+          </div>
+          <div class="error-line">
+            <span style="color: var(--terminal-blue);">  ./projects/    - Repository index and showcase</span>
+          </div>
+          <div class="error-line">
+            <span style="color: var(--terminal-blue);">  ./connect/     - Network connections and links</span>
+          </div>
+          <div class="error-line">
+            <span style="color: var(--terminal-blue);">  ./about.md     - System information and details</span>
+          </div>
+          <div class="error-line">
+            <span style="color: var(--terminal-blue);">  ./terminal.js  - Interactive command interface</span>
+          </div>
+          <div class="error-line"></div>
+          <div class="error-line">
+            <span style="color: var(--terminal-gray);"># Recommendation: Return to valid path or explore available options</span>
+          </div>
+          <div class="error-line">
+            <span style="color: var(--terminal-gray);"># Use keyboard shortcuts: Ctrl+W (close), Escape (home)</span>
+          </div>
+          <div class="error-line"></div>
+          <div class="error-line">
+            <span style="color: var(--terminal-green);">0x5un5h1n3@terminal:~$</span>
+            <span class="blink">█</span>
+          </div>
+        </div>
+        
+        <div class="error-actions">
+          <a href="index.html" class="error-btn">$ cd ~/terminal</a>
+          <a href="https://0x5un5h1n3.gitlab.io/blog" class="error-btn" target="_blank" rel="noopener noreferrer">$ open blog</a>
+          <button class="error-btn danger" onclick="history.back()">$ cd ..</button>
         </div>
       </div>
-    </footer>
-    <script>
-      // Update the current year in the footer
-      const currentYear = new Date().getFullYear();
-      document.getElementById("current-year").textContent = currentYear;
-    </script>
-  </body>
+    </div>
+  </div>
+
+  <script>
+    const cursor = document.querySelector('.custom-cursor');
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.left = `${e.clientX}px`;
+      cursor.style.top = `${e.clientY}px`;
+    });
+    
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' || e.key === 'h') {
+        window.location.href = 'index.html';
+      } else if (e.key === 'b') {
+        history.back();
+      } else if (e.ctrlKey && e.key === 'w') {
+        e.preventDefault();
+        window.location.href = 'index.html';
+      }
+    });
+    
+    document.addEventListener('contextmenu', (e) => e.preventDefault());
+    document.addEventListener('selectstart', (e) => {
+      if (!e.target.matches('input, textarea')) {
+        e.preventDefault();
+      }
+    });
+  </script>
+</body>
 </html>

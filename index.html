@@ -1,111 +1,309 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>0x5un5h1n3's Code Lair</title>
-    <meta name="description" content="0x5un5h1n3's Code Lair" />
-    <link rel="canonical" href="https://0x5un5h1n3.github.io" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>0x5un5h1n3 | Terminal</title>
+  <meta name="description" content="0x5un5h1n3 | Terminal" />
+  <link rel="canonical" href="https://0x5un5h1n3.github.io" />
+  <meta property="og:title" content="0x5un5h1n3 | Terminal" />
+  <meta property="og:description" content="0x5un5h1n3 | Terminal" />
+  <meta property="og:url" content="https://0x5un5h1n3.github.io/" />
+  <meta
+    property="og:image"
+    content="https://0x5un5h1n3.github.io/assets/images/og.png"
+  />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="DENY">
 
-    <!-- OG Tags -->
-    <meta property="og:title" content="0x5un5h1n3 | Code Lair" />
-    <meta property="og:description" content="0x5un5h1n3's Code Lair" />
-    <meta property="og:url" content="https://0x5un5h1n3.github.io/" />
-    <meta
-      property="og:image"
-      content="https://0x5un5h1n3.github.io/assets/images/og.png"
-    />
-    <meta name="robots" content="noindex, nofollow" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico" />
 
-    <link rel="stylesheet" href="css/styles.css" />
-    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico" />
+  
   </head>
   <body>
-    <header class="header">
-      <nav class="navbar">
-        <div class="logo">
-          <a href="" aria-label="Home">0x5un5h1n3</a>
-        </div>
-        <div class="nav-buttons">
-          <button id="portfolio-btn">Home</button>
-          <button id="github-btn">GitHub</button>
-          <button id="social-btn">Social</button>
-          <button id="about-btn">About</button>
-        </div>
-      </nav>
-    </header>
-    <main>
-      <section class="hero">
-        <h1>Code Lair</h1>
-        <p>Explore my work, projects, and online presence</p>
-      </section>
-      <section id="content-container" class="content-grid">
-        <!-- Content will be dynamically inserted here -->
-      </section>
-      <div class="buttons-container">
-        <div class="load-more-button">
-          <button id="load-more">Load More</button>
-        </div>
-      </div>
-    </main>
-    <footer>
-      <div class="footer-content">
-        <p>&#169; <span id="current-year"></span> 0x5un5h1n3</p>
-        <p>This site is privacy-friendly and does not track users.</p>
-        <div class="social-links">
-          <a
-            href="https://mastodon.social/@0x5un5h1n3"
-            target="_blank"
-            rel="me noopener noreferrer"
-            >Mastodon</a
-          >
-          <a
-            href="https://github.com/0x5un5h1n3"
-            target="_blank"
-            rel="noopener noreferrer"
-            >GitHub</a
-          >
-          <a
-            href="https://keyoxide.org/hkp/E7722010D9E1010C9C2C4054820C9C02C1229C58"
-            target="_blank"
-            rel="noopener noreferrer"
-            >Keyoxide</a
-          >
-          <a
-            href="https://0x5un5h1n3.gitlab.io/blog/"
-            target="_blank"
-            rel="noopener noreferrer"
-            >Blog</a
-          >
-        </div>
-      </div>
-    </footer>
+    <div class="custom-cursor"></div>
 
-    <div class="loading">
-      <div class="spinner"></div>
+    <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+    
+    <div class="mobile-overlay" id="mobile-overlay"></div>
+
+    <div class="desktop">
+      <div class="desktop-icon" id="desktop-icon" style="display: none;">
+        <span>⚡</span>
+        <div class="desktop-icon-label">Terminal</div>
+      </div>
+
+      <div class="desktop-dock" id="desktop-dock">
+        <div class="dock-item" id="dock-terminal" title="Terminal">⚡</div>
+      </div>
+
+      <div class="terminal-window" id="terminal-window">
+        <div class="titlebar" id="titlebar">
+          <div class="window-controls">
+            <button class="window-btn btn-close" id="btn-close" title="Close (Ctrl+W)"></button>
+            <button class="window-btn btn-minimize" id="btn-minimize" title="Minimize (Ctrl+M)"></button>
+            <button class="window-btn btn-maximize" id="btn-maximize" title="Maximize (Ctrl+Shift+M)"></button>
+          </div>
+          <div class="titlebar-text">0x5un5h1n3@terminal:~$ - Terminal</div>
+        </div>
+
+        <div class="terminal-content">
+          <div class="terminal-sidebar" id="sidebar">
+            <div class="sidebar-header">Explorer</div>
+            <div class="file-explorer" id="file-explorer">
+              <div class="file-item active collapsed" data-section="welcome" data-index="0" data-type="folder">
+                <span class="file-icon folder-icon">📁</span>
+                <span>welcome/</span>
+              </div>
+              <div class="file-item collapsed" data-section="projects" data-index="1" data-type="folder">
+                <span class="file-icon folder-icon">📁</span>
+                <span>projects/</span>
+              </div>
+              <div class="file-item collapsed" data-section="connect" data-index="2" data-type="folder">
+                <span class="file-icon folder-icon">📁</span>
+                <span>connect/</span>
+              </div>
+              <div class="file-item" data-section="about" data-index="3" data-type="file">
+                <span class="file-icon md-icon">📄</span>
+                <span>about.md</span>
+              </div>
+              <div class="file-item" data-section="terminal" data-index="4" data-type="file">
+                <span class="file-icon js-icon">⚡</span>
+                <span>terminal.js</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="terminal-main">
+            <div class="tab-bar">
+              <div class="tab active" id="main-tab">
+                <span class="file-icon js-icon">⚡</span>
+                <span>terminal</span>
+                <span class="tab-close">×</span>
+              </div>
+            </div>
+
+            <div class="terminal-body" id="terminal-body">
+              <div class="content-section active" id="welcome-section">
+                <div class="section-header">
+                  <h1 class="section-title">$ ./welcome</h1>
+                  <p class="section-subtitle">Welcome to my portfolio</p>
+                </div>
+                
+                <div class="terminal-output">
+                  <div class="output-line">
+                    <span class="prompt">0x5un5h1n3@terminal:~$</span>
+                    <span class="command">cat welcome.txt</span>
+                  </div>
+                  <div class="output-line">
+                    <span class="success">Welcome to my terminal!</span>
+                  </div>
+                  <div class="output-line">
+                    <span class="comment"># Explore my work, projects, and online presence</span>
+                  </div>
+                  <div class="output-line"></div>
+                  <div class="output-line">
+                    <span class="info">This terminal interface showcases my projects and connects</span>
+                  </div>
+                  <div class="output-line">
+                    <span class="info">you to my various online presences.</span>
+                  </div>
+                  <div class="output-line"></div>
+                  <div class="output-line">
+                    <span class="highlight">Navigation:</span>
+                  </div>
+                  <div class="output-line">
+                    <span class="comment">• Use arrow keys to navigate the file explorer</span>
+                  </div>
+                  <div class="output-line">
+                    <span class="comment">• Press Enter or Right arrow to open files/folders</span>
+                  </div>
+                  <div class="output-line">
+                    <span class="comment">• Type commands in the terminal input</span>
+                  </div>
+                  <div class="output-line">
+                    <span class="comment">• Use Tab/Esc to switch between file explorer and content modes</span>
+                  </div>
+                  <div class="output-line">
+                    <span class="comment">• Use Ctrl+W/M for window controls</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="content-section" id="projects-section">
+                <div class="section-header">
+                  <h1 class="section-title">$ ls -la ./projects/</h1>
+                  <p class="section-subtitle">Repository index and project archive</p>
+                </div>
+                <div class="projects-grid" id="projects-container">
+                </div>
+              </div>
+
+              <div class="content-section" id="connect-section">
+                <div class="section-header">
+                  <h1 class="section-title">$ cat ./connect/connections.txt</h1>
+                  <p class="section-subtitle">Network endpoints and communication channels</p>
+                </div>
+                
+                <ul class="connect-list">
+                  <li class="connect-item">
+                    <div class="connect-title">bhanukafernando.gitlab.io</div>
+                    <div class="connect-description">
+                      Professional portfolio • Project showcase • Skills and experience • Career timeline
+                    </div>
+                    <a href="https://bhanukafernando.gitlab.io/" class="connect-link" target="_blank" rel="noopener noreferrer">
+                      → View portfolio
+                    </a>
+                  </li>
+                  
+                  <li class="connect-item">
+                    <div class="connect-title">github.com/0x5un5h1n3</div>
+                    <div class="connect-description">
+                      Source code repositories • Open source contributions • Collaborative development
+                    </div>
+                    <a href="https://github.com/0x5un5h1n3" class="connect-link" target="_blank" rel="noopener noreferrer">
+                      → Browse repositories
+                    </a>
+                  </li>
+                  
+                  <li class="connect-item">
+                    <div class="connect-title">0x5un5h1n3.gitlab.io/blog</div>
+                    <div class="connect-description">
+                      Technical articles • Security research • Development insights • Personal opinions and reviews
+                    </div>
+                    <a href="https://0x5un5h1n3.gitlab.io/blog/" class="connect-link" target="_blank" rel="noopener noreferrer">
+                      → Read articles
+                    </a>
+                  </li>
+                  
+                  <li class="connect-item">
+                    <div class="connect-title">mastodon.social/@0x5un5h1n3</div>
+                    <div class="connect-description">
+                      Decentralized social networking • Tech and cybersecurity discussions • Open source community
+                    </div>
+                    <a href="https://mastodon.social/@0x5un5h1n3" class="connect-link" target="_blank" rel="me noopener noreferrer">
+                      → Connect on Mastodon
+                    </a>
+                  </li>
+                  
+                  <li class="connect-item">
+                    <div class="connect-title">keyoxide.org/identity</div>
+                    <div class="connect-description">
+                      Cryptographic identity verification • Decentralized authentication • Digital trust network
+                    </div>
+                    <a href="https://keyoxide.org/hkp/E7722010D9E1010C9C2C4054820C9C02C1229C58" class="connect-link" target="_blank" rel="noopener noreferrer">
+                      → Verify identity
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="content-section" id="about-section">
+                <div class="section-header">
+                  <h1 class="section-title">$ cat ./about.md</h1>
+                  <p class="section-subtitle">About Me</p>
+                </div>
+                
+                <div class="terminal-output">
+                  <div class="output-line">
+                    <span class="highlight"># About Me</span>
+                  </div>
+                  <div class="output-line"></div>
+                  <div class="output-line">
+                    <span class="comment">Hi, I'm 0x5un5h1n3, a software engineer with a passion for technology and cybersecurity.</span>
+                  </div>
+                  <div class="output-line"></div>
+                  <div class="output-line">
+                    <span class="comment">This hub serves as a central point to access my various online presences:</span>
+                  </div>
+                  <div class="output-line"></div>
+                  <div class="output-line">
+                    <span class="success">• Welcome: Terminal hub and introduction</span>
+                  </div>
+                  <div class="output-line">
+                    <span class="success">• Projects: My GitHub repositories and code projects</span>
+                  </div>
+                  <div class="output-line">
+                    <span class="success">• Connect: Portfolio, GitHub, Blog, Mastodon, and Keyoxide identity verification</span>
+                  </div>
+                  <div class="output-line">
+                    <span class="success">• Terminal: Interactive command interface</span>
+                  </div>
+                  <div class="output-line"></div>
+                  <div class="output-line">
+                    <span class="comment">Feel free to explore and connect!</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="content-section" id="terminal-section">
+                <div class="section-header">
+                  <h1 class="section-title">$ ./terminal.js --interactive</h1>
+                  <p class="section-subtitle">Interactive command-line interface</p>
+                </div>
+                
+                <div class="terminal-output" id="terminal-output">
+                  <div class="output-line">
+                    <span class="success">Terminal initialized successfully</span>
+                  </div>
+                  <div class="output-line">
+                    <span class="comment">Type 'help' for available commands</span>
+                  </div>
+                  <div class="output-line">
+                    <span class="comment">Use Tab for auto-completion, Up/Down for history</span>
+                  </div>
+                </div>
+
+                <div class="input-line">
+                  <span class="input-prompt">0x5un5h1n3@terminal:~$</span>
+                  <input type="text" class="command-input" id="command-input" autocomplete="off" spellcheck="false">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="status-bar">
+          <div class="status-left">
+            <span>Connected</span>
+            <span id="current-time"></span>
+            <span id="current-section">welcome</span>
+          </div>
+          <div class="status-right">
+            <span>UTF-8</span>
+            <span>LF</span>
+            <span>JavaScript</span>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div id="about-modal" class="modal">
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2>About Me</h2>
-        <p>
-          Hi, I'm 0x5un5h1n3, a software engineer with a passion for technology
-          and cybersecurity.
-        </p>
-        <p>
-          This hub serves as a central point to access my various online
-          presences:
-        </p>
-        <ul>
-          <li>Portfolio: Showcasing my projects and skills</li>
-          <li>GitHub: My open-source contributions and projects</li>
-          <li>Social: Connect with me on various platforms</li>
-          <li>Blog: Read my latest articles on technology and cybersecurity</li>
-        </ul>
-        <p>Feel free to explore and connect!</p>
+    <nav class="mobile-nav" id="mobile-nav">
+      <div class="mobile-nav-items">
+        <a href="#" class="mobile-nav-item active" data-section="welcome">
+          <span class="mobile-nav-icon">🏠</span>
+          <span>Welcome</span>
+        </a>
+        <a href="#" class="mobile-nav-item" data-section="projects">
+          <span class="mobile-nav-icon">📁</span>
+          <span>Projects</span>
+        </a>
+        <a href="#" class="mobile-nav-item" data-section="connect">
+          <span class="mobile-nav-icon">🌐</span>
+          <span>Connect</span>
+        </a>
+        <a href="#" class="mobile-nav-item" data-section="about">
+          <span class="mobile-nav-icon">📄</span>
+          <span>About</span>
+        </a>
+        <a href="#" class="mobile-nav-item" data-section="terminal">
+          <span class="mobile-nav-icon">⚡</span>
+          <span>Terminal</span>
+        </a>
       </div>
-    </div>
+    </nav>
 
     <script src="js/script.js"></script>
   </body>
